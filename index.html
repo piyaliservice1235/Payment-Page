@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>UPI Payment</title>
+<title>UPI QR Payment</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -27,57 +27,5 @@ width:200px;
 }
 
 button{
-padding:10px 20px;
-font-size:18px;
-margin-top:10px;
-cursor:pointer;
-}
-
-img{
-margin-top:20px;
-width:250px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="box">
-
-<h2>Scan & Pay</h2>
-
-<input type="number" id="amount" placeholder="Enter amount">
-
-<br><br>
-
-<button onclick="generateQR()">Generate QR</button>
-
-<br>
-
-<img id="qr" />
-
-</div>
-
-<script>
-
-function generateQR(){
-
-var amount=document.getElementById("amount").value;
-
-if(amount==""){
-alert("Please enter amount");
-return;
-}
-
-var upi="upi://pay?pa=piyalirani@slc&pn=Payment&am="+amount+"&cu=INR";
-
-var qr="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(upi);
-
-document.getElementById("qr").src=qr;
-
-}
-
-</script>
-
-</body>
-</html>
+padding:12px 20px;
+fo
