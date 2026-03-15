@@ -28,4 +28,60 @@ width:200px;
 
 button{
 padding:12px 20px;
-fo
+font-size:18px;
+margin-top:10px;
+cursor:pointer;
+background:#27ae60;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+img{
+margin-top:20px;
+width:260px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Scan & Pay</h2>
+
+<input type="number" id="amount" placeholder="Enter Amount">
+
+<br><br>
+
+<button onclick="generateQR()">Scan and Pay</button>
+
+<br>
+
+<img id="qr">
+
+</div>
+
+<script>
+
+function generateQR(){
+
+var amount = document.getElementById("amount").value;
+
+if(amount == ""){
+alert("Enter amount first");
+return;
+}
+
+var upi = "upi://pay?pa=piyalirani@slc&pn=Payment&am="+amount+"&cu=INR";
+
+var qr = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(upi);
+
+document.getElementById("qr").src = qr;
+
+}
+
+</script>
+
+</body>
+</html>
