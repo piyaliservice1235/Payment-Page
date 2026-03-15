@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
 body{
-font-family: Arial;
+font-family:Arial;
 text-align:center;
 background:#f2f2f2;
 padding:40px;
@@ -16,34 +15,28 @@ padding:40px;
 .box{
 background:white;
 padding:30px;
-border-radius:12px;
+border-radius:10px;
 display:inline-block;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 input{
-padding:12px;
+padding:10px;
 font-size:18px;
-width:180px;
-margin-top:10px;
+width:200px;
 }
 
 button{
-padding:12px 20px;
+padding:10px 20px;
 font-size:18px;
 margin-top:10px;
 cursor:pointer;
-background:#2ecc71;
-border:none;
-color:white;
-border-radius:6px;
 }
 
 img{
 margin-top:20px;
-width:260px;
+width:250px;
 }
-
 </style>
 </head>
 
@@ -53,4 +46,38 @@ width:260px;
 
 <h2>Scan & Pay</h2>
 
-<p
+<input type="number" id="amount" placeholder="Enter amount">
+
+<br><br>
+
+<button onclick="generateQR()">Generate QR</button>
+
+<br>
+
+<img id="qr" />
+
+</div>
+
+<script>
+
+function generateQR(){
+
+var amount=document.getElementById("amount").value;
+
+if(amount==""){
+alert("Please enter amount");
+return;
+}
+
+var upi="upi://pay?pa=piyalirani@slc&pn=Payment&am="+amount+"&cu=INR";
+
+var qr="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(upi);
+
+document.getElementById("qr").src=qr;
+
+}
+
+</script>
+
+</body>
+</html>
